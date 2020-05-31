@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-ocorrencia-table
+      author: giulianogimenez
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: ocorrencia
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+              - column:
+                  name: descricao
+                  type: varchar(255)
+              - column:
+                  name: quantidade
+                  type: number(10)
+              - column:
+                  name: evento_id
+                  type: bigint
+        - addNotNullConstraint:
+            schemaName: public
+            tableName: ocorrencia
+            columnName: id
+            constraintName: const_ocorrencia_id_not_null
+            columnDataType: number
+        - addPrimaryKey:
+            schemaName: public
+            tableName: ocorrencia
+            columnNames: id
+            constraintName: pk_ocorrencia
+        - addForeignKeyConstraint:
+            schemaName:  public
+            baseColumnNames: evento_id
+            baseTableName:  ocorrencia
+            referencedColumnNames: id
+            referencedTableName: evento
+            constraintName: fk_ocorrencia_evento
+

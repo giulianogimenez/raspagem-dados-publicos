@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-evento-table
+      author: giulianogimenez
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: evento
+            columns:
+            - column:
+                name: id
+                type: bigint
+                autoIncrement: true
+            - column:
+                name: mes
+                type: varchar(10)
+            - column:
+                name: ano
+                type: number(4)
+        - addNotNullConstraint:
+            schemaName:  public
+            tableName:  evento
+            columnName:  id
+            constraintName:  const_evento_id_not_null
+            columnDataType:  bigint
+        - addPrimaryKey:
+            schemaName:  public
+            tableName:  evento
+            columnNames:  id
+            constraintName:  pk_evento

@@ -1,0 +1,21 @@
+spring:
+    profiles:
+        active: local
+    datasource:
+        url: jdbc:postgresql://localhost:5432/ssp
+        username: postgres
+        password: postgres
+        test-on-borrow: true
+        validation-query: SELECT 1
+    tomcat:
+        test-while-idle: true
+        time-between-eviction-runs-millis: 60000
+    jpa:
+        show-sql: true
+        database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+        properties:
+            hibernate:
+                default_schema: public
+        hibernate:
+            ddl-auto: none
+            default_schema: public
